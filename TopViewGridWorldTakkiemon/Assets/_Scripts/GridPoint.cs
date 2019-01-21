@@ -12,6 +12,16 @@ public class GridPoint : MonoBehaviour
     public int y() => this.coordinates[1];
     public int z() => this.coordinates[2];
 
+    public GridPoint()
+    {
+        coordinates = new int[] { 0, 0, 0 };
+    }
+
+    public GridPoint(int x, int y, int z)
+    {
+        coordinates = new int[] { x, y, z };
+    }
+
     public int DistanceToGridPoint(GridPoint comparingGridPoint)
     {
         int[] comparingValues = new int[3];
