@@ -23,5 +23,17 @@ public class MapgridBehavior : MonoBehaviour
         }
     }
 
-
+    public void DrawMapGrid()
+    {
+        for (int x = -gridMapSize; x < gridMapSize; x++)
+        {
+            for (int y = -gridMapSize; y < gridMapSize; y++)
+            {
+                for (int z = -gridMapSize; z < gridMapSize; z++)
+                {
+                    gridField[x, y, z].DrawGridBox();
+                }
+            }
+        }
+    }
 }

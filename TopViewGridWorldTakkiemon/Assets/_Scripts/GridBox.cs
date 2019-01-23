@@ -32,8 +32,7 @@ public class GridBox : MonoBehaviour
 
     public void DrawGridBox()
     {
-
-
+        
     }
 
     public int DistanceToGridBox(GridBox comparingGridBox)
