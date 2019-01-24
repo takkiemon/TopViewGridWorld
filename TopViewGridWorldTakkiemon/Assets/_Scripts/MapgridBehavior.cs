@@ -5,33 +5,41 @@ using UnityEngine;
 public class MapgridBehavior : MonoBehaviour
 {
     public float gridBoxSize; //the distance between centre of the grid and the corner
-    public int gridMapSize; //for now, it's the number of gridboxes spreading outwards from the center GridBox
+    public int mapSize; //for now, it's the number of gridboxes spreading outwards from the center GridBox
     public GridBox[,,] gridField;
     private Vector3 meanVector; //this vector is used to align the hexagon grid 
 
+    public void Start()
+    {
+        gridField = new GridBox[2 * mapSize, 2 * mapSize, 2 * mapSize];
+    }
+
     public void BuildMapGrid()
     {
-        for (int x = -gridMapSize; x < gridMapSize; x++)
+        for (int x = -mapSize; x < mapSize; x++)
         {
-            for (int y = -gridMapSize; y < gridMapSize; y++)
+            for (int y = -mapSize; y < mapSize; y++)
             {
-                for (int z = -gridMapSize; z < gridMapSize; z++)
+                for (int z = -mapSize; z < mapSize; z++)
                 {
-                    gridField[x, y, z] = new GridBox(x, y, z);
+                    gridField[x + mapSize, y + mapSize, z + mapSize] = new GridBox(x, y, z, gridBoxSize);
+                    gridField[x + mapSize, y + mapSize, z + mapSize].SetPosition();
                 }
             }
         }
     }
 
-    public void DrawMapGrid()
+    [ContextMenu("DrawGridMap")]
+    public void DrawGridMap()
     {
-        for (int x = -gridMapSize; x < gridMapSize; x++)
+        for (int x = -mapSize; x < mapSize; x++)
         {
-            for (int y = -gridMapSize; y < gridMapSize; y++)
+            for (int y = -mapSize; y < mapSize; y++)
             {
-                for (int z = -gridMapSize; z < gridMapSize; z++)
+                for (int z = -mapSize; z < mapSize; z++)
                 {
-                    gridField[x, y, z].DrawGridBox();
+                    Debug.Log("x: " + x + " (+ " + mapSize + "), y: " + y + " (+ " + mapSize + "), z: " + z + " (+ " + mapSize + ")");
+                    gridField[x + mapSize, y + mapSize, z + mapSize].DrawGridBox();
                 }
             }
         }

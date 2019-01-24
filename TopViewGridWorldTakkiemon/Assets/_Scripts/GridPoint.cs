@@ -22,7 +22,7 @@ public class GridPoint : MonoBehaviour
         coordinates = new int[] { x, y, z };
     }
 
-    public int DistanceToGridPoint(GridPoint comparingGridPoint)
+    public int Distance(GridPoint comparingGridPoint)
     {
         int[] comparingValues = new int[3];
         for (int i = 0; i < comparingValues.Length; i++)
