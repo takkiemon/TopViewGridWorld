@@ -15,16 +15,23 @@ public class GridBox : MonoBehaviour
         gridPoint = new GridPoint();
     }
 
-    public GridBox(int x, int y, int z)
+    /*public GridBox(int x, int y, int z)
     {
-        gridPoint = new GridPoint(x, y, z);
+        //gridPoint = new GridPoint(x, y, z);
+        gridPoint = new GridPoint(x, y);
+    }*/
+
+    public GridBox(int x, int y)
+    {
+        gridPoint = new GridPoint(x, y);
     }
 
     public GridBox(int[] coordinates)
     {
         if (coordinates.Length == 3)
         {
-            gridPoint = new GridPoint(coordinates[0], coordinates[1], coordinates[2]);
+            //gridPoint = new GridPoint(coordinates[0], coordinates[1], coordinates[2]);
+            gridPoint = new GridPoint(coordinates[0], coordinates[1]);
         }
         else
         {
@@ -33,9 +40,16 @@ public class GridBox : MonoBehaviour
         }
     }
 
-    public GridBox(int x, int y, int z, float gridBoxSize)
+    /*public GridBox(int x, int y, int z, float gridBoxSize)
     {
-        gridPoint = new GridPoint(x, y, z);
+        //gridPoint = new GridPoint(x, y, z);
+        gridPoint = new GridPoint(x, y);
+        size = gridBoxSize;
+    }*/
+
+    public GridBox(int x, int y, float gridBoxSize)
+    {
+        gridPoint = new GridPoint(x, y);
         size = gridBoxSize;
     }
 
@@ -45,7 +59,8 @@ public class GridBox : MonoBehaviour
 
         if (coordinates.Length == 3)
         {
-            gridPoint = new GridPoint(coordinates[0], coordinates[1], coordinates[2]);
+            //gridPoint = new GridPoint(coordinates[0], coordinates[1], coordinates[2]);
+            gridPoint = new GridPoint(coordinates[0], coordinates[1]);
         }
         else
         {
@@ -54,10 +69,13 @@ public class GridBox : MonoBehaviour
         }
     }
 
-    public void SetPosition()
+    public void SetPosition(float x, float y)
     {
-        Debug.Log("setposition: x: " + gridPoint.x() * 1.5f + ", y: " + gridPoint.y() + ", z: " + gridPoint.z());
-        position = new Vector3(gridPoint.x() * 1.5f, gridPoint.y(), gridPoint.z());
+        //Debug.Log("setposition: x: " + gridPoint.x() * 1.5f + ", y: " + gridPoint.y() + ", z: " + gridPoint.z());
+        //Debug.Log("setposition: x: " + (gridPoint.x() * 1.5f + gridPoint.y() * size) + ", y: " + gridPoint.y());
+        //position = new Vector3(gridPoint.x() * 1.5f, gridPoint.y(), gridPoint.z());
+        //position = new Vector3((gridPoint.x() * 1.5f) + (gridPoint.y() * size), 0, gridPoint.y());
+        position = new Vector3(x, 0, y);
     }
 
     public void DrawGridBox()
@@ -80,5 +98,13 @@ public class GridBox : MonoBehaviour
     public void OnMouseExit()
     {
         //unchange color
+    }
+
+    public void Delete()
+    {
+        if (shape != null)
+        {
+            Destroy(shape);
+        }
     }
 }

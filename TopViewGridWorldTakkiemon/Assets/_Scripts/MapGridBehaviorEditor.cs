@@ -19,5 +19,10 @@ public class MapGridBehaviorEditor : Editor
         if (GUILayout.Button("Draw Map")) {
             gridScript.DrawGridMap();
         }
+
+        if (GUILayout.Button("Delete Map"))
+        {
+            gridScript.DeleteGridMap();
+        }
     }
 }
